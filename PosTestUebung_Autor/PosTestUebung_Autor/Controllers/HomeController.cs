@@ -33,6 +33,7 @@ namespace PosTestUebung_Autor.Controllers
 
         public IActionResult CreateAuthor(Autor autor)
         {
+           
             _context.Autoren.Add(autor);
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
@@ -40,7 +41,23 @@ namespace PosTestUebung_Autor.Controllers
 
         public IActionResult AddBuchForm(int? id)
         {
-            if(id is not null && id>0)
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            SelectListItem eintrag1 = new SelectListItem("Verry Good", "5");
+            selectListItems.Add(eintrag1);
+            SelectListItem eintrag2 = new SelectListItem("Good", "4");
+            selectListItems.Add(eintrag2);
+            SelectListItem eintrag3 = new SelectListItem("Mid", "3");
+            selectListItems.Add(eintrag3);
+            SelectListItem eintrag4 = new SelectListItem("Ok", "2");
+            selectListItems.Add(eintrag4);
+            SelectListItem eintrag5 = new SelectListItem("Awful", "1");
+            selectListItems.Add(eintrag5);
+
+            // Die Übergabe erfolgt über das ViewData-Dictionary
+            ViewData["Kategorien"] = selectListItems;
+
+
+            if (id is not null && id>0)
             {
                 var authorenFromDB = _context.Autoren.FirstOrDefault(s=>s.Id == id);
                 if(authorenFromDB is not null)

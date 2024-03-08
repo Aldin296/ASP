@@ -37,8 +37,12 @@
             <div class="row mb-3">
                 <div class="col">
                     <label>How many stars do you give the book? (1-5)</label>
+                    <!--
                     <input class="form-control" asp-for="Stars" type="number" step="1" placeholder="Stars" />
                     <span asp-validation-for="Stars" class="text-danger"></span>
+                    -->
+                    <select asp-for="Stars" form-control" asp-items="@((IEnumerable<SelectListItem>)ViewData["Kategorien"])"></select>
+
                 </div>
             </div>
         </div>

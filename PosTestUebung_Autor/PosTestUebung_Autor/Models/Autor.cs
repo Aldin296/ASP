@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace PosTestUebung_Autor.Models
 {
@@ -7,6 +8,7 @@ namespace PosTestUebung_Autor.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [Range(18,150, ErrorMessage ="The age has to be between 18 and 150")]
         public int Age { get; set; }
 
         [JsonIgnore]

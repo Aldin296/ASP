@@ -25,6 +25,8 @@
                     <div class="col">
                         <label>What the age of the Author?</label>
                         <textarea class="form-control" asp-for="Age" type="number" placeholder="Age"></textarea>
+                        <span asp-validation-for="Age" class="text-danger"></span>
+
                     </div>
                 </div>
             </div>
@@ -34,3 +36,9 @@
         </div>
     </form>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
