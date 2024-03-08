@@ -67,6 +67,23 @@ namespace PosTestUebung_Autor.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult DeleteAuthor(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var authorFromDB = _context.Autoren.Include(author => author.Buecher).FirstOrDefault(m => m.Id == id);
+            if (authorFromDB is null)
+            {
+                return NotFound();
+            }
+            _context.Autoren.Remove(authorFromDB);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Privacy()
         {
