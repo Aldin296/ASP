@@ -53,14 +53,18 @@ namespace PosTestUebung_Autor.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult AddBuch(Buch buch)
+        public IActionResult AddBuch(Buch book)
         {
-            if(buch.AutorId is not null && buch.AutorId > 0)
+            if (book.AutorId is not null && book.AutorId > 0)
             {
-                Autor? authorFromDB = _context.Autoren.FirstOrDefault(x=>x.Id == buch.AutorId);
-                if(authorFromDB is not null)
+                Autor? autorFromDb = _context.Autoren.FirstOrDefault(x => x.Id == book.AutorId);
+
+                if (autorFromDb is not null)
                 {
-                    authorFromDB.Buecher.Add(buch);
+                    List<string> genres = book.Genres[0].Split(",").ToList();
+                    book.Genres = genres;
+
+                    autorFromDb.Buecher.Add(book);
                     _context.SaveChanges();
                 }
             }

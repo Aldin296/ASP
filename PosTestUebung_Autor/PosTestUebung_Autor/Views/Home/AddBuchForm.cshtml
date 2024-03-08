@@ -8,42 +8,42 @@
 <form asp-controller="Home" asp-action="AddBuch">
     <div class="card">
         <div class="card-header">
-            <h1>Add a book for the Author</h1>
+            <h1>Here you can add books</h1>
         </div>
         <div class="card-body">
             <input hidden asp-for="AutorId" />
 
             <div class="row mb-3">
                 <div class="col">
-                    <label>Whats the title of the book?</label>
-                    <input class="form-control" asp-for="Title" type="text" placeholder="Title" />
+                    <label>What is the title of the book?</label>
+                    <input class="form-control" asp-for="Title" type="text" placeholder="Book" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label>What Genre does the book have?</label>
-                    <input class="form-control" asp-for="Genres" type="text" placeholder="Genre" />
+                    <label>What are the genres of the book? (Divide with commas)</label>
+                    <input class="form-control" asp-for="Genres" type="text" placeholder="Genres" />
                     <span asp-validation-for="Genres" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
                     <label>How many pages does the book have?</label>
-                    <input class="form-control" asp-for="Pagecount" type="number" step="1" placeholder="Pagecount" />
+                    <input class="form-control" asp-for="Pagecount" type="number" step="1" placeholder="0" />
                     <span asp-validation-for="Pagecount" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label>How many stars does the book have?</label>
+                    <label>How many stars do you give the book? (1-5)</label>
                     <input class="form-control" asp-for="Stars" type="number" step="1" placeholder="Stars" />
                     <span asp-validation-for="Stars" class="text-danger"></span>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-primary" type="submit">Add</button>
+            <button class="btn btn-primary" type="submit">Hinzufügen</button>
         </div>
     </div>
 </form>
